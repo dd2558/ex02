@@ -7,8 +7,8 @@
 <title>Save</title>
 </head>
 <body>
-	<form action="/board/save" method="post">
-		<input type="text" name="boardWriter" placeholder="작성자"/> <br> <br>
-	</form>
+	<h2>Hello Springframework</h2>
+	<a href= "/board/save">글작성</a>
+	<a href= "/board">글목록</a>
 </body>
 </html>
