@@ -3,6 +3,6 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.study.erum.dto.MemberDTO" alias="member"></typeAlias>
+        <typeAlias type="com.study.erum.dto.BoardDTO" alias="board"></typeAlias>
     </typeAliases>
 </configuration>
