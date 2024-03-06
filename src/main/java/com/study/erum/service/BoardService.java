@@ -31,5 +31,9 @@ public class BoardService {
 	    boardRepository.updateHits(id);
 	    }
 
+	public void delete(Long id) {
+		boardRepository.delete(id);
+	}
+
 
 }
