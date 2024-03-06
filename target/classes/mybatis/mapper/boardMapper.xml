@@ -4,10 +4,18 @@
 <mapper namespace="Board"> <!-- 레포지토리에 리턴값 "Board. ~~ 쿼리문" -->
 
 <!-- 데이터 삽입 -->
-    <insert id="save" parameterType="board">
-        insert into board_table(boardWriter, boardPassword, boardTitle, boardContent)
-        values (#{boardWriter}, #{boardPassword}, #{boardTitle}, #{boardContent})
+    <insert id="insert" parameterType="Board">
+        insert into board_table(boardWriter, boardPass, boardTitle, boardContents)
+        values (#{boardWriter}, #{boardPass}, #{boardTitle}, #{boardContents})
     </insert>
+ <!-- 데이터 조회 -->   
+    <select id="findAll" resultType="board">
+        select * from board_table order by id desc
+    </select>
+ <!-- 상세 보기 -->
+  	<select id="findById" parameterType="Long" resultType="board">
+       	 select * from board_table where id=#{id}
+   	</select>
     
 
 	
