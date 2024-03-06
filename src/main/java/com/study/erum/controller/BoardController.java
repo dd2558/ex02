@@ -31,13 +31,13 @@ public class BoardController {
     public String save(@ModelAttribute BoardDTO boardDTO) {
         int saveResult = boardService.save(boardDTO);
         if (saveResult > 0) {
-            return "redirect:/board/";
+            return "redirect:/board/list";
         } else {
             return "save";
         }
     }
 	
-    @GetMapping("/")
+    @GetMapping("/list")
     public String findAll(Model model) {
         List<BoardDTO> boardDTOList = boardService.findAll();
         model.addAttribute("boardList", boardDTOList);
@@ -55,8 +55,23 @@ public class BoardController {
     @GetMapping("/delete")
     public String delete(@RequestParam("id") Long id) {
     	boardService.delete(id);
-    	return "redirect:/board/";
+    	return "redirect:/board/list";
     }
     
-	
+    @GetMapping("/update")
+	public String updateForm(@RequestParam("id") Long id, Model model) {
+    	BoardDTO boardDTO = boardService.findById(id);
+    	model.addAttribute("board",boardDTO);
+    	return "update";
+    }
+    
+    @PostMapping("/update")
+    public String update(@ModelAttribute BoardDTO boardDTO, Model model) {
+    	boardService.update(boardDTO);
+    	BoardDTO dto = boardService.findById(boardDTO.getId());
+    	model.addAttribute("board",dto);
+    	return "detail";
+    	
+    }
+    
 }

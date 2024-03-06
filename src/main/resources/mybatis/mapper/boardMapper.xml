@@ -20,8 +20,14 @@
 	<update id="updateHits" parameterType="Long">
 		 update board_table set boardHits = boardHits + 1 where id =#{id}	
 	</update>
-	<!-- 삭~제 -->
+<!-- 삭~제 -->
 	<delete id="delete" parameterType="Long">
 		delete from board_table where id =#{id}
 	</delete>
+<!-- 글수정 -->
+	<update id="update" parameterType="Board">
+		update board_table set boardTitle=#{boardTitle},boardContents=#{boardContents} where id=#{id}
+	</update>	
+<!-- ID autoincrement 초기화 -->
+		
 </mapper>
