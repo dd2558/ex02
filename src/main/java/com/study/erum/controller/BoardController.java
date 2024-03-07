@@ -32,7 +32,7 @@ public class BoardController {
     public String save(@ModelAttribute BoardDTO boardDTO) {
         int saveResult = boardService.save(boardDTO);
         if (saveResult > 0) {
-            return "redirect:/board/list";
+            return "redirect:/board/paging";
         } else {
             return "save";
         }
@@ -46,12 +46,17 @@ public class BoardController {
     }
 
     @GetMapping
-    public String findById(@RequestParam("id") Long id, Model model) {
-    	boardService.updateHits(id);
-    	BoardDTO boardDTO = boardService.findById(id);
+    public String findById(@RequestParam("id") Long id,
+                           @RequestParam(value = "page", required = false, defaultValue = "1") int page,
+                           Model model) {
+
+        boardService.updateHits(id);
+        BoardDTO boardDTO = boardService.findById(id);
         model.addAttribute("board", boardDTO);
+        model.addAttribute("page", page);
         return "detail";
     }
+
     
     @GetMapping("/delete")
     public String delete(@RequestParam("id") Long id) {
