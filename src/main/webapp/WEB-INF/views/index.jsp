@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Save</title>
+<link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 	<h2>Hello Springframework</h2>
